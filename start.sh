@@ -15,6 +15,8 @@ for v in R2_BUCKET MODELS; do
     echo "export $v=\"${!v}\"" >> /root/.bashrc
   fi
 done
+echo "PATH=$PATH" >> /etc/environment
+echo "export PATH=\"$PATH\"" >> /root/.bashrc
 echo ">>> [2/4] Configuring rclone for R2"
 mkdir -p /root/.config/rclone
 cat > /root/.config/rclone/rclone.conf <<EOC
