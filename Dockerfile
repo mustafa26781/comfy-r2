@@ -12,7 +12,7 @@ RUN curl -fsSL https://downloads.rclone.org/rclone-current-linux-amd64.zip -o /t
 RUN git clone --depth 1 https://github.com/comfyanonymous/ComfyUI /app/ComfyUI \
  && pip install --no-cache-dir -r /app/ComfyUI/requirements.txt \
  && pip install --no-cache-dir "huggingface_hub[cli]"
-COPY start.sh addmodel.sh getmodel.sh /app/
-RUN chmod +x /app/start.sh /app/addmodel.sh /app/getmodel.sh
+COPY start.sh addmodel.sh getmodel.sh tts.sh /app/
+RUN chmod +x /app/start.sh /app/addmodel.sh /app/getmodel.sh /app/tts.sh
 EXPOSE 8188 22
 CMD ["/app/start.sh"]
