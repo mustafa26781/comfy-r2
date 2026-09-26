@@ -7,6 +7,13 @@ if [ -n "${PUBLIC_KEY:-}" ]; then
   chmod 700 /root/.ssh; chmod 600 /root/.ssh/authorized_keys
 fi
 /usr/sbin/sshd || true
+# make R2_BUCKET / MODELS visible in SSH sessions (they don't inherit the container env)
+for v in R2_BUCKET MODELS; do
+  if [ -n "${!v:-}" ]; then
+    echo "$v=${!v}" >> /etc/environment
+    echo "export $v=\"${!v}\"" >> /root/.bashrc
+  fi
+done
 echo ">>> [2/4] Configuring rclone for R2"
 mkdir -p /root/.config/rclone
 cat > /root/.config/rclone/rclone.conf <<EOC
