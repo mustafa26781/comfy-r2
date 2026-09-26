@@ -7,8 +7,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  && rm -rf /var/lib/apt/lists/*
 RUN curl -fsSL https://downloads.rclone.org/rclone-current-linux-amd64.zip -o /tmp/rc.zip \
  && unzip -q /tmp/rc.zip -d /tmp/rc \
- && install -m 0755 /tmp/rc/rclone-*-linux-amd64/rclone /usr/bin/rclone \
- && rm -rf /tmp/rc /tmp/rc.zip && rclone version
+ && install -m 0755 /tmp/rc/rclone-*-linux-amd64/rclone /usr/local/bin/rclone \
+ && rm -rf /tmp/rc /tmp/rc.zip && /usr/local/bin/rclone version
 RUN git clone --depth 1 https://github.com/comfyanonymous/ComfyUI /app/ComfyUI \
  && pip install --no-cache-dir -r /app/ComfyUI/requirements.txt \
  && pip install --no-cache-dir "huggingface_hub[cli]"
