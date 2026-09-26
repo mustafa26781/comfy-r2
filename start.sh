@@ -31,6 +31,7 @@ no_check_bucket = true
 EOC
 install -m 0755 /app/getmodel.sh /usr/local/bin/getmodel 2>/dev/null || true
 install -m 0755 /app/addmodel.sh /usr/local/bin/addmodel 2>/dev/null || true
+install -m 0755 /app/tts.sh /usr/local/bin/tts 2>/dev/null || true
 if rclone lsf "r2:${R2_BUCKET:-}" --max-depth 1 >/dev/null 2>&1; then
   echo "    R2 connection OK (bucket: ${R2_BUCKET:-})"
 else
